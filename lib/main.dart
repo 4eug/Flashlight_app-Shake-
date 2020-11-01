@@ -1,5 +1,9 @@
+//import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:torch_compat/torch_compat.dart';
+import 'package:flashlight_app/shake.dart';
+//import 'package:background_mode/background_mode.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +15,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  //FlashLight light = new FlashLight();
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   initPlatformState();
+  // }
+
+  // void initPlatformState() async {
+  //   BackgroundMode.start();
+
+  //   Timer.periodic(Duration(seconds: 120), (timer) {
+  //     BackgroundMode.disable();
+  //     BackgroundMode.bringToForeground();
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,20 +47,7 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // ignore: missing_required_param
-                FlatButton(
-                  onPressed: () {
-                    TorchCompat.turnOn();
-                  },
-                  child: Image.asset('images/On.png'),
-                ),
-                // ignore: missing_required_param
-                FlatButton(
-                  onPressed: () {
-                    TorchCompat.turnOff();
-                  },
-                  child: Image.asset('images/Off.png'),
-                ),
+                FlashLight(),
               ],
             ),
           ),
