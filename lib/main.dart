@@ -1,9 +1,9 @@
-//import 'dart:async';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
-// import 'package:torch_compat/torch_compat.dart';
+import 'package:torch_compat/torch_compat.dart';
 import 'package:flashlight_app/shakelight.dart';
-//import 'package:background_mode/background_mode.dart';
+import 'package:background_mode/background_mode.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,10 +23,10 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           backgroundColor: Colors.red,
           centerTitle: true,
-          title: Text('Flashlight'),
+          title: Text('ShakyTorch'),
         ),
-        body: Center(
-          child: Container(
+        body: Container(
+          child: Stack(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
