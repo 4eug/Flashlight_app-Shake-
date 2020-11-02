@@ -1,5 +1,9 @@
+//import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:torch_compat/torch_compat.dart';
+// import 'package:torch_compat/torch_compat.dart';
+import 'package:flashlight_app/shakelight.dart';
+//import 'package:background_mode/background_mode.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,31 +30,12 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // ignore: missing_required_param
-                FlatButton(
-                  onPressed: () {
-                    TorchCompat.turnOn();
-                  },
-                  child: Image.asset('images/On.png'),
-                ),
-                // ignore: missing_required_param
-                FlatButton(
-                  onPressed: () {
-                    TorchCompat.turnOff();
-                  },
-                  child: Image.asset('images/Off.png'),
-                ),
+                ShakeLight(),
               ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    TorchCompat.dispose();
-    super.dispose();
   }
 }
