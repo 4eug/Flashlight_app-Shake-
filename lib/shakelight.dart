@@ -40,7 +40,7 @@ class _ShakeLightState extends State<ShakeLight> {
   @override
   void dispose() {
     detector.stopListening();
-
+    TorchCompat.dispose();
     super.dispose();
   }
 
