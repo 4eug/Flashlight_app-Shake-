@@ -8,12 +8,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  shake: ^0.1.0
-
   background_mode: ^1.0.1
-
   cupertino_icons: ^1.0.0
+  shake: ^0.1.0
+  slimy_card: ^1.0.4
   torch_compat: ^1.0.2
 
 dev_dependencies:
