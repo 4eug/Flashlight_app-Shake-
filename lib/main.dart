@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:slimy_card/slimy_card.dart';
-// import 'package:flashlight_app/shakelight.dart';
 import 'package:torch_compat/torch_compat.dart';
 import 'package:shake/shake.dart';
 
@@ -105,7 +104,6 @@ Widget topCardWidget(String imagePath) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-      //ShakeLight(),
       Container(
         height: 70,
         width: 70,
