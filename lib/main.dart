@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:slimy_card/slimy_card.dart';
 // import 'package:flashlight_app/shakelight.dart';
 import 'package:torch_compat/torch_compat.dart';
+import 'package:shake/shake.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,6 +33,48 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int counter = 1;
+  ShakeDetector detector;
+  String onImage = "images/Off.png";
+  String offImage = "images/Off.png";
+
+  @override
+  void initState() {
+    super.initState();
+
+    detector = ShakeDetector.autoStart(onPhoneShake: () {
+      setState(() {
+        counter++;
+        print(counter);
+        if (counter == 2) {
+          //TorchCompat.turnOn();
+          //_isOn = true;
+          TorchCompat.turnOn();
+
+          onImage = "images/On.png";
+          offImage = "images/On.png";
+        }
+
+        if (counter == 4) {
+          //TorchCompat.turnOff();
+          // _isOn = false;
+          //lightoff();
+          TorchCompat.turnOff();
+          offImage = "images/Off.png";
+          onImage = "images/Off.png";
+
+          counter = 1;
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    TorchCompat.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +87,10 @@ class _HomePageState extends State<HomePage> {
             children: [
               SizedBox(height: 100),
               SlimyCard(
-                topCardWidget:
-                    topCardWidget((snapshot.data) ? lighton() : lightoff()),
+                topCardWidget: topCardWidget(
+                    (snapshot.data) ? this.onImage : this.offImage),
                 bottomCardWidget: bottomCardWidget(),
+                slimeEnabled: true,
               ),
             ],
           );
@@ -96,14 +140,14 @@ Widget topCardWidget(String imagePath) {
   );
 }
 
-String lighton() {
+String lighton(String string, int counter) {
   TorchCompat.turnOn();
-  return 'images/On.png';
+  return string;
 }
 
-String lightoff() {
+String lightoff(String string, int counter) {
   TorchCompat.turnOff();
-  return 'images/Off.png';
+  return string;
 }
 
 // This widget will be passed as Bottom Card's Widget.
